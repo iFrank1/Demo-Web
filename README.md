@@ -4,7 +4,6 @@
 
 **Calculadora de evaluación nutricional, llevada del escritorio (Java Swing) al navegador.**
 
-<!-- cambia la url cuando vercel te la asigne -->
 [**▶ Probar la demo**](https://nuteval-demo-web.vercel.app) · [Ver el video](#-la-app-de-escritorio) · [Cómo se verificó](#-mismos-resultados-que-java)
 
 ![Java](https://img.shields.io/badge/App_original-Java_Swing-E76F00?style=flat-square&logo=openjdk&logoColor=white)
