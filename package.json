@@ -1,0 +1,11 @@
+{
+  "name": "nuteval-demo-web",
+  "version": "1.0.0",
+  "description": "Demo web simplificada de NutEval, calculadora nutricional hecha en Java",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node servidor.js",
+    "test": "node --test tests/*.test.js"
+  }
+}

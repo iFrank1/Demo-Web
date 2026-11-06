@@ -1,0 +1,11 @@
+node_modules/
+.vercel/
+.DS_Store
+Thumbs.db
+
+# solo para uso personal: guion para grabar el video y documentacion interna
+video/
+docs/
+
+# compilados de la referencia java
+tests/java/out/

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NutEval · Demo web</title>
+  <meta name="description" content="Demo web simplificada de NutEval, calculadora nutricional de escritorio hecha en Java para un servicio social.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2339B2B6'/><text x='16' y='22' font-size='16' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'>N</text></svg>">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="barra">
+    <span class="marca">Nut<b>Eval</b> <small>demo web</small></span>
+    <nav>
+      <a href="#video">Video</a>
+      <a href="#calculadora">Probar</a>
+      <a href="#completa">App completa</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Calculadora nutricional NutEval</h1>
+      <p>NutEval es una aplicación de escritorio en <b>Java (Swing)</b> para la evaluación nutricional:
+        expediente de pacientes, antropometría, gasto energético, somatotipo, plan alimenticio,
+        recordatorio de 24 h y panel de análisis.</p>
+      <p class="aviso">Esta página es una <b>demo reducida</b> para mostrar el proyecto en el navegador.
+        Solo incluye los cálculos básicos. Las fórmulas son las mismas que en Java y unas pruebas
+        automáticas lo verifican. La demo web se construyó con apoyo de IA por falta de tiempo.</p>
+    </section>
+
+    <section id="video" class="tarjeta">
+      <h2>La app completa en video</h2>
+      <video id="video-demo" controls preload="metadata" playsinline src="media/demo.mp4"></video>
+      <p id="sin-video" class="vacio" hidden>El video de la app de escritorio se agregará pronto.</p>
+    </section>
+
+    <section id="calculadora" class="calc">
+      <form id="form" class="tarjeta" autocomplete="off">
+        <h2>Paciente</h2>
+        <label class="campo ancho">Paciente de ejemplo
+          <select id="ejemplo"></select>
+        </label>
+
+        <fieldset>
+          <legend>Datos básicos</legend>
+          <label class="campo">Sexo
+            <select name="sexo"><option>Hombre</option><option>Mujer</option></select>
+          </label>
+          <label class="campo">Edad (años)<input name="edad" type="number" min="1" step="1"></label>
+          <label class="campo">Peso (kg)<input name="peso" type="number" min="1" step="0.1"></label>
+          <label class="campo">Altura (cm)<input name="altura" type="number" min="1" step="1"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Circunferencias (cm)</legend>
+          <label class="campo">Cintura<input name="cintura" type="number" min="1" step="0.1"></label>
+          <label class="campo">Cadera<input name="cadera" type="number" min="1" step="0.1"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Pliegues cutáneos (mm)</legend>
+          <label class="campo">Pectoral<input name="pectoral" type="number" min="1" step="0.1"></label>
+          <label class="campo">Axilar<input name="axilar" type="number" min="1" step="0.1"></label>
+          <label class="campo">Tricipital<input name="tricipital" type="number" min="1" step="0.1"></label>
+          <label class="campo">Subescapular<input name="subescapular" type="number" min="1" step="0.1"></label>
+          <label class="campo">Abdominal<input name="abdominal" type="number" min="1" step="0.1"></label>
+          <label class="campo">Suprailiaco<input name="suprailiaco" type="number" min="1" step="0.1"></label>
+          <label class="campo">Muslo<input name="muslo" type="number" min="1" step="0.1"></label>
+          <label class="campo">Supraespinal<input name="supraespinal" type="number" min="1" step="0.1"></label>
+          <label class="campo">Pantorrilla<input name="plieguePantorrilla" type="number" min="1" step="0.1"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Diámetros y perímetros (cm)</legend>
+          <label class="campo">Diámetro húmero<input name="humero" type="number" min="1" step="0.1"></label>
+          <label class="campo">Diámetro fémur<input name="femur" type="number" min="1" step="0.1"></label>
+          <label class="campo">Perímetro brazo<input name="brazo" type="number" min="1" step="0.1"></label>
+          <label class="campo">Perímetro pantorrilla<input name="pantorrilla" type="number" min="1" step="0.1"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Gasto energético</legend>
+          <label class="campo">Ecuación<select name="ecuacion"></select></label>
+          <label class="campo">Actividad física<select name="actividad"></select></label>
+        </fieldset>
+      </form>
+
+      <div class="resultados">
+        <div id="avisos" class="avisos" role="alert" hidden></div>
+
+        <section class="tarjeta">
+          <h2>Antropometría</h2>
+          <div class="cuadricula" id="antropometria"></div>
+        </section>
+
+        <section class="tarjeta">
+          <h2>Gasto energético</h2>
+          <p class="nota" id="gasto-nota"></p>
+          <div class="cuadricula" id="gasto"></div>
+          <div class="barra-get" id="barra-get" aria-hidden="true"></div>
+        </section>
+
+        <section class="tarjeta">
+          <h2>Somatotipo (Heath-Carter)</h2>
+          <div class="soma">
+            <div class="cuadricula una" id="soma-valores"></div>
+            <svg id="somatocarta" viewBox="-9.5 -15 19 24.5" role="img" aria-label="Somatocarta"></svg>
+          </div>
+        </section>
+
+        <button type="button" id="imprimir" class="boton">Imprimir hoja resumen</button>
+      </div>
+    </section>
+
+    <section id="completa" class="tarjeta">
+      <h2>Lo que tiene la app de escritorio y no está aquí</h2>
+      <ul class="lista">
+        <li><b>Expediente de pacientes</b> con historia clínica completa y exportación a Excel.</li>
+        <li><b>Plan alimenticio</b> por día (lunes a domingo) con el sistema de equivalentes.</li>
+        <li><b>Recordatorio de 24 horas</b> con porciones y totales de macronutrientes.</li>
+        <li><b>Panel de análisis</b> de grupo con gráficas y exportación CSV.</li>
+        <li><b>Antropometría avanzada:</b> áreas del brazo, masa ósea y masa residual.</li>
+        <li><b>Hoja resumen en PDF</b> con logo institucional.</li>
+      </ul>
+      <p>Esos módulos aparecen en el video. Aquí no se incluyeron para que la demo siga siendo simple.</p>
+    </section>
+  </main>
+
+  <section id="hoja" class="hoja" aria-hidden="true"></section>
+
+  <footer class="pie">
+    <p>NutEval · proyecto de servicio social (BUAP) · demo web con apoyo de IA.</p>
+    <p>Herramienta educativa: no sustituye la valoración de un profesional de la nutrición.
+      Los pacientes de ejemplo son ficticios.</p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
