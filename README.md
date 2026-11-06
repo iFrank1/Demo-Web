@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🥗 NutEval · Demo web
+# NutEval · Demo web
 
 **Calculadora de evaluación nutricional, llevada del escritorio (Java Swing) al navegador.**
 
@@ -21,7 +21,7 @@
 
 ---
 
-## 📌 Sobre el proyecto
+## Sobre el proyecto
 
 **NutEval** es una aplicación de escritorio para la evaluación nutricional. Se desarrolló en Java como proyecto de **servicio social (BUAP)**. Tiene unas 19,000 líneas y cubre:
 - expediente de pacientes
@@ -37,18 +37,18 @@ Una app Swing no corre en el navegador. Este repositorio es una **demo reducida*
 > [!NOTE]
 > La demo web se construyó **con apoyo de IA (Claude)** por falta de tiempo. La aplicación de escritorio en Java es el trabajo original del equipo. Las fórmulas de la web se portaron de ese código y se verifican automáticamente contra él.
 
-## ✨ Qué se puede probar
+## Qué se puede probar
 
 | Módulo | Qué calcula |
 |:--|:--|
-| 📏 **Antropometría** | IMC, peso ideal, índice cintura/cadera, índice cintura/talla, % de grasa (Jackson-Pollock 7 pliegues + Siri), masa magra |
-| 🔥 **Gasto energético** | GEB con Harris-Benedict, Mifflin-St Jeor o Valencia, más ETA, EFA y GET |
-| 🧍 **Somatotipo** | Endomorfia, mesomorfia y ectomorfia (Heath-Carter), con somatocarta |
-| 🖨️ **Hoja resumen** | Versión imprimible de los resultados |
+| **Antropometría** | IMC, peso ideal, índice cintura/cadera, índice cintura/talla, % de grasa (Jackson-Pollock 7 pliegues + Siri), masa magra |
+| **Gasto energético** | GEB con Harris-Benedict, Mifflin-St Jeor o Valencia, más ETA, EFA y GET |
+| **Somatotipo** | Endomorfia, mesomorfia y ectomorfia (Heath-Carter), con somatocarta |
+| **Hoja resumen** | Versión imprimible de los resultados |
 
 Trae 5 pacientes de ejemplo **ficticios**. Cambia cualquier dato y los resultados se recalculan al instante, con su clasificación (normal, riesgo, etc.).
 
-## 🖥️ La app de escritorio
+## La app de escritorio
 
 <div align="center">
 <img src="assets/app-escritorio.gif" alt="Recorrido por la app de escritorio NutEval" width="760">
@@ -70,7 +70,7 @@ Trae 5 pacientes de ejemplo **ficticios**. Cambia cualquier dato y los resultado
 
 </details>
 
-## ✅ Mismos resultados que Java
+## Mismos resultados que Java
 
 Portar fórmulas a mano es fácil de equivocar, así que cada resultado de la web se compara con lo que calcula el código Java original:
 
@@ -87,7 +87,7 @@ flowchart LR
 npm test
 ```
 
-## 🚀 Correr en local
+## Correr en local
 
 Requisito: [Node.js](https://nodejs.org) 18 o superior. No hay nada que instalar.
 
@@ -100,7 +100,7 @@ npm run dev          # abre http://localhost:5173
 > [!TIP]
 > Abrir `index.html` con doble clic no funciona, porque el navegador bloquea los módulos JS en `file://`. Por eso `npm run dev` levanta `servidor.js`, un servidor mínimo hecho solo con Node.
 
-## 🧱 Estructura
+## Estructura
 
 ```
 ├── index.html             página única
@@ -119,7 +119,7 @@ npm run dev          # abre http://localhost:5173
 - **Fórmulas separadas de la interfaz:** así se pueden probar con Node.
 - **Sin backend ni almacenamiento:** no se guarda ningún dato.
 
-## ⚠️ Aviso
+## Aviso
 
 Herramienta **educativa**. No sustituye la valoración de un profesional de la nutrición. Todos los pacientes de la demo son ficticios.
 
